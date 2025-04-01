@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://dscdritoctisg"]
+
+[ext_resource type="PackedScene" uid="uid://dhbs610suixhi" path="res://scenes/Player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://dychwtcpfnd55" path="res://scenes/Spawner.gd" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://ckgi4aut5m8c3" path="res://scenes/enemy.tscn" id="3_jyhfs"]
+[ext_resource type="Script" uid="uid://loawxpruxhbn" path="res://Scripts/EnemyFactory.gd" id="4_tbgi4"]
+
+[sub_resource type="Resource" id="Resource_tefeu"]
+script = ExtResource("4_tbgi4")
+enemy_scene = ExtResource("3_jyhfs")
+metadata/_custom_type_script = "uid://loawxpruxhbn"
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_o5qli")]
+z_index = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("2_0wfyh")
+factory = SubResource("Resource_tefeu")
