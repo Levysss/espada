@@ -16,11 +16,14 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if player.kills <5 and howManySpawn<5:
 		for i in range(5):
-			spawn_entity(Vector2(0, 1))
+			spawn_entity(RangeSpanw())
 			howManySpawn+=1
 			
 	elif player.kills >5 and howManySpawn<10:
 		for i in range(5):
-			spawn_entity(Vector2(0, 1))
+			spawn_entity(RangeSpanw())
+			howManySpawn+=1
 			
 	
+func RangeSpanw()-> Vector2:
+	return Vector2(randf_range(500,-500),randf_range(300,-300))
