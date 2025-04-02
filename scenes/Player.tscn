@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dhbs610suixhi"]
+[gd_scene load_steps=18 format=3 uid="uid://dhbs610suixhi"]
 
 [ext_resource type="Texture2D" uid="uid://cs45vmu76h7cw" path="res://Sprites/PersoSheet-export.png" id="1_p0vlq"]
 [ext_resource type="Script" uid="uid://ffunkol8knmy" path="res://Scripts/player.gd" id="1_v6fml"]
@@ -95,6 +95,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6fml"]
+size = Vector2(40, 41)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0vlq"]
 size = Vector2(31, 32)
 
@@ -107,6 +110,14 @@ sprite_frames = SubResource("SpriteFrames_p7iby")
 frame = 2
 frame_progress = 0.98112
 
+[node name="HurtBox" type="Area2D" parent="." groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, 2.5)
+shape = SubResource("RectangleShape2D_v6fml")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 2)
 shape = SubResource("RectangleShape2D_p0vlq")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
