@@ -19,8 +19,8 @@ func _physics_process(delta: float) -> void:
 			spawn_entity(RangeSpanw())
 			howManySpawn+=1
 			
-	elif player.kills >5 and howManySpawn<10:
-		for i in range(5):
+	elif player.kills >=5 and howManySpawn<10:
+		for i in range(10):
 			spawn_entity(RangeSpanw())
 			howManySpawn+=1
 			
