@@ -44,10 +44,6 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	currentHealth -= 1
 	heartChanged.emit(currentHealth)
 	
-	var knockback_force = 1000
-	var knockback_direction = (global_position - area.global_position).normalized()
-	velocity = knockback_direction * knockback_force
-	
 	if currentHealth <= 0:
 		#player.kills+=1
 		#print(player.kills)
