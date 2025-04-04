@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://dscdritoctisg"]
+[gd_scene load_steps=15 format=4 uid="uid://dscdritoctisg"]
 
 [ext_resource type="PackedScene" uid="uid://dhbs610suixhi" path="res://scenes/Player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dychwtcpfnd55" path="res://Scripts/Spawner.gd" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://ckgi4aut5m8c3" path="res://scenes/enemy.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://8x71i8k5gexy" path="res://scenes/weapon.tscn" id="3_tefeu"]
 [ext_resource type="Script" uid="uid://loawxpruxhbn" path="res://Scripts/EnemyFactory.gd" id="4_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://d4cjo3m40i8nr" path="res://TileMap/spr_tileset_scenario.png" id="5_tbgi4"]
 
@@ -75,6 +76,43 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_tbgi4")
 
+[sub_resource type="Animation" id="Animation_o6xl0"]
+resource_name = "weapon"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_tipki"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_85g3d"]
+_data = {
+&"RESET": SubResource("Animation_tipki"),
+&"weapon": SubResource("Animation_o6xl0")
+}
+
 [sub_resource type="Resource" id="Resource_tefeu"]
 script = ExtResource("4_tbgi4")
 enemy_scene = ExtResource("3_jyhfs")
@@ -101,6 +139,13 @@ tile_set = SubResource("TileSet_tefeu")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_o5qli")]
 z_index = 1
+
+[node name="weapon" parent="Player" instance=ExtResource("3_tefeu")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+&"": SubResource("AnimationLibrary_85g3d")
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

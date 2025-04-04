@@ -4,6 +4,8 @@ var kills = 0
 var heatl = 100
 
 @onready var walkAnimation = $AnimatedSprite2D
+@onready var animation = $AnimationPlayer
+
 var healtBar
 
 func _ready() -> void:
@@ -43,3 +45,4 @@ func moviment():
 
 func _process(delta: float) -> void:
 	walkAnimation.play("default");
+	animation.play("weapon")

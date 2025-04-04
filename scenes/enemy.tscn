@@ -141,11 +141,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nenq2"]
-size = Vector2(28, 32)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
 size = Vector2(34.375, 38.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nenq2"]
+size = Vector2(28, 32)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(1.6, 1.6)
@@ -155,11 +155,15 @@ script = ExtResource("1_md0e3")
 sprite_frames = SubResource("SpriteFrames_xwavj")
 animation = &"Right"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_nenq2")
-
 [node name="hitBox" type="Area2D" parent="."]
+scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 position = Vector2(-0.312501, 0.312504)
 shape = SubResource("RectangleShape2D_c4w8v")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_nenq2")
+
+[connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]
