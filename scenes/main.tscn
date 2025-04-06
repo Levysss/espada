@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dscdritoctisg"]
+[gd_scene load_steps=22 format=4 uid="uid://dscdritoctisg"]
 
 [ext_resource type="PackedScene" uid="uid://dhbs610suixhi" path="res://scenes/Player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://dbjys1bogawg" path="res://TileMap/tile set novo.png" id="1_tefeu"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ckgi4aut5m8c3" path="res://scenes/enemy.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://8x71i8k5gexy" path="res://scenes/weapon.tscn" id="3_tefeu"]
 [ext_resource type="Script" uid="uid://loawxpruxhbn" path="res://Scripts/EnemyFactory.gd" id="4_tbgi4"]
+[ext_resource type="AudioStream" uid="uid://3acwhthaxcdm" path="res://Slashsword .wav" id="7_o6xl0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o6xl0"]
 texture = ExtResource("1_tefeu")
@@ -182,3 +183,8 @@ offset_bottom = 634.0
 theme_override_styles/background = SubResource("StyleBoxFlat_tbgi4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_tefeu")
 show_percentage = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_o6xl0")
+volume_db = -9.369
+autoplay = true
